@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<coleccion>
+   <moto>
+      <marca>Honda</marca>
+      <modelo>CBR 1000 RR Fireblade</modelo>
+      <cilindrada>1000</cilindrada>
+      <potencia>178.1999969482422</potencia>
+      <cilindros>4</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>16119.0</precio>
+      <imagen>honda1100rr.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Honda</marca>
+      <modelo>MSX 125</modelo>
+      <cilindrada>125</cilindrada>
+      <potencia>9.800000190734863</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>3699.0</precio>
+      <imagen>hondamsx125.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Honda</marca>
+      <modelo>CRF 250X</modelo>
+      <cilindrada>249</cilindrada>
+      <potencia>29.799999237060547</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>7839.0</precio>
+      <imagen>hondacrf250x.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Honda</marca>
+      <modelo>CRF  50F</modelo>
+      <cilindrada>49</cilindrada>
+      <potencia>3.0</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>2129.0</precio>
+      <imagen>hondacrf50f.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Honda</marca>
+      <modelo>VT 750 S</modelo>
+      <cilindrada>745</cilindrada>
+      <potencia>44.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>7489.0</precio>
+      <imagen>hondavt750s.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Yamaha</marca>
+      <modelo>X enter 125 Moto Gp</modelo>
+      <cilindrada>125</cilindrada>
+      <potencia>12.199999809265137</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>3179.0</precio>
+      <imagen>yamahaxenter125motogp.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Yamaha</marca>
+      <modelo>X Max 250</modelo>
+      <cilindrada>250</cilindrada>
+      <potencia>20.399999618530273</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>4999.0</precio>
+      <imagen>yamahaxmax250.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Yamaha</marca>
+      <modelo>XJ6 Diversion F ABS</modelo>
+      <cilindrada>600</cilindrada>
+      <potencia>77.5</potencia>
+      <cilindros>4</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>8799.0</precio>
+      <imagen>yamahaxj6diversionfabs.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Yamaha</marca>
+      <modelo>YBR 125</modelo>
+      <cilindrada>124</cilindrada>
+      <potencia>10.0</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>2619.0</precio>
+      <imagen>yamahaybr125.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Yamaha</marca>
+      <modelo>XT 660 X</modelo>
+      <cilindrada>660</cilindrada>
+      <potencia>48.0</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>7199.0</precio>
+      <imagen>yamahaxt660x.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Triumph</marca>
+      <modelo>Daytona 675</modelo>
+      <cilindrada>675</cilindrada>
+      <potencia>131.0</potencia>
+      <cilindros>3</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>10695.0</precio>
+      <imagen>triumphdaytona675.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Triumph</marca>
+      <modelo>Spring GT</modelo>
+      <cilindrada>1050</cilindrada>
+      <potencia>128.0</potencia>
+      <cilindros>3</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>13695.0</precio>
+      <imagen>triumphspringgt.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Triumph</marca>
+      <modelo>Bonneville SE</modelo>
+      <cilindrada>865</cilindrada>
+      <potencia>67.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>8995.0</precio>
+      <imagen>triumphbonnevillese.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Triumph</marca>
+      <modelo>Bonneville T100 Especial Edition</modelo>
+      <cilindrada>865</cilindrada>
+      <potencia>68.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>9865.0</precio>
+      <imagen>triumphbonnevillet100ee.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Triumph</marca>
+      <modelo>Street Triple R ABS</modelo>
+      <cilindrada>675</cilindrada>
+      <potencia>106.0</potencia>
+      <cilindros>3</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>8695.0</precio>
+      <imagen>triumphstreettriplerabs.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Harley Davidson</marca>
+      <modelo>Dyna Street Bob</modelo>
+      <cilindrada>1584</cilindrada>
+      <potencia>0.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>14850.0</precio>
+      <imagen>harleydynastreetbob.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Harley Davidson</marca>
+      <modelo>Dyna Wide Glide</modelo>
+      <cilindrada>1585</cilindrada>
+      <potencia>0.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>17600.0</precio>
+      <imagen>dynawideglide.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Harley Davidson</marca>
+      <modelo>Sportster Seventy-Two</modelo>
+      <cilindrada>1202</cilindrada>
+      <potencia>0.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>12400.0</precio>
+      <imagen>sportsterseventytwo.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Harley Davidson</marca>
+      <modelo>Sportster Superlow 1200T</modelo>
+      <cilindrada>1203</cilindrada>
+      <potencia>67.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>12750.0</precio>
+      <imagen>sportstersuperlow1200t.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Harley Davidson</marca>
+      <modelo>VRSC V-Rod Muscle</modelo>
+      <cilindrada>1246</cilindrada>
+      <potencia>112.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Liquida</refrigeracion>
+      <precio>20250.0</precio>
+      <imagen>vrscvrodmuscle.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Moto Guzzi</marca>
+      <modelo>Norge 850</modelo>
+      <cilindrada>850</cilindrada>
+      <potencia>72.0999984741211</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>12030.0</precio>
+      <imagen>guzzinorge850.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Moto Guzzi</marca>
+      <modelo>Breva 750</modelo>
+      <cilindrada>744</cilindrada>
+      <potencia>48.29999923706055</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>7990.0</precio>
+      <imagen>guzzibreva750.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Moto Guzzi</marca>
+      <modelo>V7 Cafe Classic</modelo>
+      <cilindrada>744</cilindrada>
+      <potencia>48.79999923706055</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>0.0</precio>
+      <imagen>guzziv7cafeclassic.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Moto Guzzi</marca>
+      <modelo>Stelvio 1200 NTX</modelo>
+      <cilindrada>1151</cilindrada>
+      <potencia>102.0</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>14990.0</precio>
+      <imagen>guzzistelvio1200ntx.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>Moto Guzzi</marca>
+      <modelo>V7 Clubman Racer</modelo>
+      <cilindrada>744</cilindrada>
+      <potencia>48.79999923706055</potencia>
+      <cilindros>2</cilindros>
+      <refrigeracion>Aire</refrigeracion>
+      <precio>9890.0</precio>
+      <imagen>v7clubmanracer.jpeg</imagen>
+   </moto>
+   <moto>
+      <marca>1</marca>
+      <modelo>1</modelo>
+      <cilindrada>1</cilindrada>
+      <potencia>1.0</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>1</refrigeracion>
+      <precio>1.0</precio>
+      <imagen>Falta imagen</imagen>
+   </moto>
+   <moto>
+      <marca>1</marca>
+      <modelo>1</modelo>
+      <cilindrada>1</cilindrada>
+      <potencia>1.0</potencia>
+      <cilindros>1</cilindros>
+      <refrigeracion>1</refrigeracion>
+      <precio>1.0</precio>
+      <imagen>Falta imagen</imagen>
+   </moto>
+</coleccion>
+
