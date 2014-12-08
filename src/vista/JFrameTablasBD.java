@@ -47,7 +47,8 @@ public class JFrameTablasBD extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel1 = new javax.swing.JLabel();
         jTNombreTabla = new javax.swing.JTextField();
@@ -68,32 +69,39 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jBTerminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Creación de Tablas");
 
         jLabel1.setText("Nombre Tabla");
 
         jTableCampos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane1.setViewportView(jTableCampos);
 
         jBAgregarCampo.setText("Agregar campo");
-        jBAgregarCampo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jBAgregarCampo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jBAgregarCampoActionPerformed(evt);
             }
         });
 
         jBCrearTabla.setText("Crear tabla");
-        jBCrearTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jBCrearTabla.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jBCrearTablaActionPerformed(evt);
             }
         });
@@ -107,8 +115,10 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jCBTipoDatos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "INTEGER", "BOOL", "DOUBLE", "FLOAT", "REAL", "CHAR", "TEXT", "VARCHAR", "BLOB", "NUMERIC", "DATETIME", "INTEGER (strict)", "REAL (strict)", "TEXT (strict)" }));
 
         jChClaveP.setText("Clave Primaria");
-        jChClaveP.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        jChClaveP.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 jChClavePStateChanged(evt);
             }
         });
@@ -116,20 +126,26 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jChNulos.setText("Permitir Nulo");
 
         jChUnica.setText("Unica");
-        jChUnica.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        jChUnica.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 jChUnicaStateChanged(evt);
             }
         });
-        jChUnica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jChUnica.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jChUnicaActionPerformed(evt);
             }
         });
 
         jChAutoinc.setText("Autoincrementar");
-        jChAutoinc.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        jChAutoinc.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 jChAutoincStateChanged(evt);
             }
         });
@@ -182,15 +198,19 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         );
 
         jBcancelar.setText("Cancelar");
-        jBcancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jBcancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jBcancelarActionPerformed(evt);
             }
         });
 
         jBTerminar.setText("Terminar");
-        jBTerminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jBTerminar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jBTerminarActionPerformed(evt);
             }
         });

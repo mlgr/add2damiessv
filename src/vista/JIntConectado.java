@@ -83,7 +83,8 @@ public class JIntConectado extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPopupTablas = new javax.swing.JPopupMenu();
         jMc1Modificar = new javax.swing.JMenuItem();
@@ -104,24 +105,30 @@ public class JIntConectado extends javax.swing.JInternalFrame {
         jPopupTablas.add(jMc1Modificar);
 
         jMc2Renombrar.setText("Renombrar Tabla");
-        jMc2Renombrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMc2Renombrar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMc2RenombrarActionPerformed(evt);
             }
         });
         jPopupTablas.add(jMc2Renombrar);
 
         jMc3Borrar.setText("Borrar Tabla");
-        jMc3Borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMc3Borrar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMc3BorrarActionPerformed(evt);
             }
         });
         jPopupTablas.add(jMc3Borrar);
 
         jMc4Examinar.setText("Examinar Tabla");
-        jMc4Examinar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMc4Examinar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMc4ExaminarActionPerformed(evt);
             }
         });
@@ -131,10 +138,12 @@ public class JIntConectado extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Propiedades de Tabla");
 
         jLabel1.setText(".");
 
-        jListTablas.setModel(new javax.swing.AbstractListModel() {
+        jListTablas.setModel(new javax.swing.AbstractListModel()
+        {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
@@ -142,16 +151,20 @@ public class JIntConectado extends javax.swing.JInternalFrame {
         jListTablas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListTablas.setAutoscrolls(false);
         jListTablas.setComponentPopupMenu(jPopupTablas);
-        jListTablas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+        jListTablas.addListSelectionListener(new javax.swing.event.ListSelectionListener()
+        {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
+            {
                 jListTablasValueChanged(evt);
             }
         });
         jScrollPane1.setViewportView(jListTablas);
 
         jBAgregarTabla.setText("Agregar tabla");
-        jBAgregarTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jBAgregarTabla.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jBAgregarTablaActionPerformed(evt);
             }
         });
@@ -161,21 +174,25 @@ public class JIntConectado extends javax.swing.JInternalFrame {
         jLabel3.setText("CAMPOS");
 
         jTableCampos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane2.setViewportView(jTableCampos);
 
         jBtnMostrarCampos.setText("Ver campos");
-        jBtnMostrarCampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jBtnMostrarCampos.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jBtnMostrarCamposActionPerformed(evt);
             }
         });
