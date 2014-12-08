@@ -44,7 +44,8 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
@@ -84,7 +85,7 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setMaximizable(true);
-        setResizable(true);
+        setTitle("Ficheros");
 
         jLabelmensaje.setBackground(new java.awt.Color(255, 255, 153));
         jLabelmensaje.setText("<Fichero XML no seleccionado>");
@@ -93,8 +94,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnMostrarDom.setBackground(new java.awt.Color(102, 255, 102));
         BtnMostrarDom.setText("Muestra DOM");
         BtnMostrarDom.setEnabled(false);
-        BtnMostrarDom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnMostrarDom.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnMostrarDomActionPerformed(evt);
             }
         });
@@ -102,8 +105,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnMostrarSax.setBackground(new java.awt.Color(102, 255, 102));
         BtnMostrarSax.setText("Muestra SAX");
         BtnMostrarSax.setEnabled(false);
-        BtnMostrarSax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnMostrarSax.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnMostrarSaxActionPerformed(evt);
             }
         });
@@ -112,8 +117,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnMostrarXml.setText("Mostrar XML");
         BtnMostrarXml.setEnabled(false);
         BtnMostrarXml.setRequestFocusEnabled(false);
-        BtnMostrarXml.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnMostrarXml.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnMostrarXmlActionPerformed(evt);
             }
         });
@@ -122,8 +129,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnMostrarTexto.setText("Muestra Texto");
         BtnMostrarTexto.setEnabled(false);
         BtnMostrarTexto.setName(""); // NOI18N
-        BtnMostrarTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnMostrarTexto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnMostrarTextoActionPerformed(evt);
             }
         });
@@ -131,8 +140,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnMostrarBinario.setBackground(new java.awt.Color(102, 255, 255));
         BtnMostrarBinario.setText("Muestra Binario");
         BtnMostrarBinario.setEnabled(false);
-        BtnMostrarBinario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnMostrarBinario.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnMostrarBinarioActionPerformed(evt);
             }
         });
@@ -140,8 +151,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnMostrarArray.setBackground(new java.awt.Color(102, 255, 255));
         BtnMostrarArray.setText("Mostrar Array");
         BtnMostrarArray.setEnabled(false);
-        BtnMostrarArray.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnMostrarArray.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnMostrarArrayActionPerformed(evt);
             }
         });
@@ -157,13 +170,17 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         jLabel1.setText("Marca");
 
         jTextFieldMarca.setEditable(false);
-        jTextFieldMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextFieldMarca.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextFieldMarcaActionPerformed(evt);
             }
         });
-        jTextFieldMarca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextFieldMarca.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldMarcaKeyPressed(evt);
             }
         });
@@ -173,15 +190,19 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         jLabel3.setText("Cilindrada");
 
         jTextFieldCilindrada.setEditable(false);
-        jTextFieldCilindrada.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
+        jTextFieldCilindrada.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldCilindradaKeyReleased(evt);
             }
         });
 
         jTextFieldModelo.setEditable(false);
-        jTextFieldModelo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextFieldModelo.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldModeloKeyPressed(evt);
             }
         });
@@ -189,8 +210,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         jLabel4.setText("Potencia");
 
         jTextFieldPotencia.setEditable(false);
-        jTextFieldPotencia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextFieldPotencia.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldPotenciaKeyPressed(evt);
             }
         });
@@ -198,8 +221,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         jLabel5.setText("Cilindros");
 
         jTextFieldCilindros.setEditable(false);
-        jTextFieldCilindros.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextFieldCilindros.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldCilindrosKeyPressed(evt);
             }
         });
@@ -211,8 +236,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         jLabel8.setText("Refrigeracion");
 
         jTextFieldRefrigeracion.setEditable(false);
-        jTextFieldRefrigeracion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextFieldRefrigeracion.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldRefrigeracionKeyPressed(evt);
             }
         });
@@ -220,8 +247,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         jLabel9.setText("Precio");
 
         jTextFieldPrecio.setEditable(false);
-        jTextFieldPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextFieldPrecio.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 jTextFieldPrecioKeyPressed(evt);
             }
         });
@@ -327,8 +356,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnCancelar.setText("Cancelar");
         BtnCancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtnCancelar.setEnabled(false);
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnCancelarActionPerformed(evt);
             }
         });
@@ -336,8 +367,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnAnyadir.setText("Añadir");
         BtnAnyadir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtnAnyadir.setEnabled(false);
-        BtnAnyadir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnAnyadir.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnAnyadirActionPerformed(evt);
             }
         });
@@ -345,8 +378,10 @@ public class JIntFicheros extends javax.swing.JInternalFrame {
         BtnGuardar.setText("Guardar ficheros");
         BtnGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtnGuardar.setEnabled(false);
-        BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnGuardar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnGuardarActionPerformed(evt);
             }
         });

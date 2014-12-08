@@ -10,12 +10,19 @@
             <file>file:/media/luis/Datos/Programacion/CursoSegundo/Java/MLuz_Luis_Proyecto1/src/modelo/Principal.java</file>
         </group>
         <group name="psp-pen"/>
-        <group name="AccesoDatos"/>
         <group name="acceso datos">
             <file>file:/F:/proyecto2/MLuz_Luis_Proyecto1/src/vista/JIntConectado.java</file>
             <file>file:/F:/proyecto2/MLuz_Luis_Proyecto1/src/controlador/DBManager.java</file>
             <file>file:/F:/proyecto2/MLuz_Luis_Proyecto1/src/vista/JIntTablasBd.java</file>
             <file>file:/F:/proyecto2/MLuz_Luis_Proyecto1/src/vista/MdiPrueba.java</file>
+        </group>
+        <group name="AccesoDatos">
+            <file>file:/home/luis/Java/MLuz_Luis_Proyecto/src/vista/JIntTablasBd.java</file>
+            <file>file:/home/luis/Java/MLuz_Luis_Proyecto/src/vista/MdiPrueba.java</file>
+            <file>file:/home/luis/Java/MLuz_Luis_Proyecto/src/vista/JFrameTablasBD.java</file>
+            <file>file:/home/luis/Java/MLuz_Luis_Proyecto/src/vista/NewJFrameInicio.java</file>
+            <file>file:/home/luis/Java/MLuz_Luis_Proyecto/src/vista/JIntConectado.java</file>
+            <file>file:/home/luis/Java/MLuz_Luis_Proyecto/src/vista/JIntFicheros.java</file>
         </group>
     </open-files>
 </project-private>
