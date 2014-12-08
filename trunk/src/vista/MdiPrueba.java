@@ -352,11 +352,10 @@ public class MdiPrueba extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se ha podido cerrar la conexión con la Base de Datos\nReinicie el programa o inténtelo de nuevo");
         }
-
     }//GEN-LAST:event_MenuDesconectarBDActionPerformed
 
     private void MenuEjecutarComandoBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEjecutarComandoBDActionPerformed
-        // TODO add your handling code here:
+        //
     }//GEN-LAST:event_MenuEjecutarComandoBDActionPerformed
 
     private void MenuRenombrarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRenombrarBDActionPerformed
