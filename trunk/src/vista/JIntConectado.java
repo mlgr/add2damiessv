@@ -21,58 +21,77 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alumno
  */
-public class JIntConectado extends javax.swing.JInternalFrame {
-    
+public class JIntConectado extends javax.swing.JInternalFrame
+{
+
     private DBManager mydb;
     private DefaultListModel modeloLista;
-    
+
     private JTable tabla;
     private DefaultTableModel dtm;
-    
+
     private MdiPrueba padre;
-    
-    public void setPadre(MdiPrueba padre) {
+
+    public void setPadre(MdiPrueba padre)
+    {
         this.padre = padre;
     }
-    
-    public DBManager getMydb() {
+
+    public DBManager getMydb()
+    {
         return mydb;
     }
-    
-    public void setMydb(DBManager mydb) throws Exception {
+
+    /**
+     * Método para establecer la base de datos actual y cargar los datos en la
+     * tabla y en la lista
+     *
+     * @param mydb
+     * @throws Exception
+     */
+    public void setMydb(DBManager mydb) throws Exception
+    {
         this.mydb = mydb;
-        try {
+        try
+        {
             mydb.conectar();
             modeloLista = mydb.listarTablas();
             jListTablas.setModel(modeloLista);
             jListTablas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             jListTablas.setSelectedIndex(0);
-
-            //mydb.cerrar();
-        } catch (Exception ex) {
-            try {
+        } catch (Exception ex)
+        {
+            try
+            {
                 this.cerrar();
-            } catch (SQLException ex1) {
+            } catch (SQLException ex1)
+            {
                 JOptionPane.showMessageDialog(null, "No se ha podido cerrar la ventana\nLA aplicación se cerrará");
                 System.exit(0);
             }
-            
             JOptionPane.showMessageDialog(null, "Error accediendo a la base de datos, se cerrará la ventana\n" + ex.getMessage());
             throw new Exception("NOTADB");
-            
         }
     }
-    
-    public void setjLabel1Text(String texto) {
+
+    /**
+     * Método para mostrar en el label superior el archivo de base de datos
+     * actual
+     *
+     * @param texto
+     */
+    public void setjLabel1Text(String texto)
+    {
         this.jLabel1.setText(texto);
     }
 
     /**
      * Creates new form JIntConectado
      */
-    public JIntConectado() {
+    public JIntConectado()
+    {
         initComponents();
-        
+
         dtm = new DefaultTableModel();
     }
 
@@ -151,13 +170,6 @@ public class JIntConectado extends javax.swing.JInternalFrame {
         jListTablas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListTablas.setAutoscrolls(false);
         jListTablas.setComponentPopupMenu(jPopupTablas);
-        jListTablas.addListSelectionListener(new javax.swing.event.ListSelectionListener()
-        {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
-            {
-                jListTablasValueChanged(evt);
-            }
-        });
         jScrollPane1.setViewportView(jListTablas);
 
         jBAgregarTabla.setText("Agregar tabla");
@@ -249,32 +261,41 @@ public class JIntConectado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jListTablasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTablasValueChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jListTablasValueChanged
-
+    /**
+     * Método para mostrar los campos y sus propiedades en la tabla
+     *
+     * @param evt
+     */
     private void jBtnMostrarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMostrarCamposActionPerformed
-        
+
         List<Object[]> obj;
         obj = new ArrayList<>();
         String nombreTabla = jListTablas.getSelectedValue().toString();
-        
+
         InicializarDtm();
-        try {
+        try
+        {
             mydb.conectar();
             obj = mydb.listarCampos(nombreTabla);
             mydb.cerrar();
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex)
+        {
             Logger.getLogger(JIntConectado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (int i = 0; i < obj.size(); i++) {
+        for (int i = 0; i < obj.size(); i++)
+        {
             Object[] o = obj.get(i);
             dtm.addRow(o);
         }
-        
+
         jLabel3.setText("CAMPOS DE LA TABLA " + nombreTabla);
     }//GEN-LAST:event_jBtnMostrarCamposActionPerformed
-
+    /**
+     * Método para agregar una nueva tabla a la BD actual. Se muestra el
+     * formulario correspondiente.
+     *
+     * @param evt
+     */
     private void jBAgregarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarTablaActionPerformed
         JIntTablasBd tabla = new JIntTablasBd();
         tabla.setBdManager(mydb);
@@ -291,47 +312,66 @@ public class JIntConectado extends javax.swing.JInternalFrame {
     {//GEN-HEADEREND:event_jMc2RenombrarActionPerformed
         String viejoNombre = jListTablas.getSelectedValue().toString();
         String nuevoNombre = JOptionPane.showInputDialog(null, "Escriba el nuevo nombre de la tabla");
-        
-        if (!nuevoNombre.isEmpty()) {
-            try {
+
+        if (!nuevoNombre.isEmpty())
+        {
+            try
+            {
                 String sql = String.format("ALTER TABLE %s RENAME TO %s", viejoNombre, nuevoNombre);
                 boolean r = mydb.ejecutarInsercion(sql);
-                
+
                 JOptionPane.showMessageDialog(null, "Tabla renombrada correctamente");
                 refrescar();
-            } catch (SQLException ex) {
+            } catch (SQLException ex)
+            {
                 JOptionPane.showMessageDialog(null, "No se ha podido renombrar la tabla");
             }
         }
     }//GEN-LAST:event_jMc2RenombrarActionPerformed
 
+    /**
+     * Método para eliminar una tabla de la base de datos actual
+     *
+     * @param evt
+     */
     private void jMc3BorrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMc3BorrarActionPerformed
     {//GEN-HEADEREND:event_jMc3BorrarActionPerformed
         String nombreTabla = jListTablas.getSelectedValue().toString();
-        
+
         if (JOptionPane.showConfirmDialog(null, "¿Está seguro de borrar la tabla " + nombreTabla,
-                "Eliminar Tabla", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            try {
+                "Eliminar Tabla", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            try
+            {
                 String sql = String.format("DROP TABLE %s ", nombreTabla);
                 boolean r = mydb.ejecutarInsercion(sql);
                 JOptionPane.showMessageDialog(null, "Tabla eliminada correctamente");
                 refrescar();
-            } catch (SQLException ex) {
+            } catch (SQLException ex)
+            {
                 JOptionPane.showMessageDialog(null, "No se ha podido eliminar la tabla");
             }
         }
     }//GEN-LAST:event_jMc3BorrarActionPerformed
 
+    /**
+     * Método para mostrar en un formulario aparte que contiene una tabla el
+     * resultado de una select genérica sobre la tabla seleccionada
+     *
+     * @param evt
+     */
     private void jMc4ExaminarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMc4ExaminarActionPerformed
     {//GEN-HEADEREND:event_jMc4ExaminarActionPerformed
         String nombreTabla = jListTablas.getSelectedValue().toString();
         DefaultTableModel dtm2;
-        try {
+        try
+        {
             dtm2 = mydb.SelectFromTabla(nombreTabla);
             JFrameExaminarTabla jfeT = new JFrameExaminarTabla(dtm2);
             jfeT.setTitle("Select * from " + nombreTabla);
             jfeT.setVisible(true);
-        } catch (SQLException ex) {
+        } catch (SQLException ex)
+        {
             Logger.getLogger(JIntConectado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMc4ExaminarActionPerformed
@@ -354,59 +394,87 @@ public class JIntConectado extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableCampos;
     // End of variables declaration//GEN-END:variables
 
-    private void InicializarDtm() {
+    /**
+     * Método para borrar todas las lineas del dtm
+     */
+    private void InicializarDtm()
+    {
         // Eliminamos  las filas del dtm
         tabla = this.jTableCampos;
-        
+
         tabla.setModel(dtm);
-        for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
+        for (int i = dtm.getRowCount() - 1; i >= 0; i--)
+        {
             dtm.removeRow(i);
         }
-        
-        java.lang.Object[] colIdentifiers
-                = {
-                    "Nombre campo", "Tipo de datos", "Valor nulo", "Es PK"
-                };
-        
+
+        java.lang.Object[] colIdentifiers =
+        {
+            "Nombre campo", "Tipo de datos", "Valor nulo", "Es PK"
+        };
+
         dtm.setColumnIdentifiers(colIdentifiers);
     }
-    
-    public void cerrar() throws SQLException {
-        try {
+
+    /**
+     * Método para cerrar la base de datos actual
+     *
+     * @throws SQLException
+     */
+    public void cerrar() throws SQLException
+    {
+        try
+        {
             mydb.cerrar();
             InicializarDtm();
             jLabel3.setText("CAMPOS");
             this.setVisible(false);
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             throw new SQLException(e);
         }
     }
-    
-    public boolean abrir(DBManager md) {
+
+    /**
+     * Método para abrir una base de datos
+     *
+     * @param md
+     * @return
+     */
+    public boolean abrir(DBManager md)
+    {
         jLabel3.setText("CAMPOS");
-        
-        try {
+
+        try
+        {
             jBtnMostrarCampos.setEnabled(false);
             this.setjLabel1Text("Conectado con la Base de Datos " + md.getArchivoBD());
             InicializarDtm();
             this.setMydb(md);
-            
-            if (jListTablas.getMaxSelectionIndex() > -1) {
+
+            if (jListTablas.getMaxSelectionIndex() > -1)
+            {
                 jBtnMostrarCampos.setEnabled(true);
             }
             return true;
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
             return false;
         }
     }
-    
-    public void refrescar() {
+
+    /**
+     * Método para volver a cargar los campos de la tabla y de la lista
+     */
+    public void refrescar()
+    {
         jLabel3.setText("CAMPOS");
-        
+
         jBtnMostrarCampos.setEnabled(false);
         this.setjLabel1Text("Conectado con la Base de Datos " + mydb.getArchivoBD());
         InicializarDtm();
-        try {
+        try
+        {
             mydb.conectar();
             modeloLista = mydb.listarTablas();
             jListTablas.setModel(modeloLista);
@@ -414,19 +482,23 @@ public class JIntConectado extends javax.swing.JInternalFrame {
             jListTablas.setSelectedIndex(0);
 
             //mydb.cerrar();
-        } catch (Exception ex) {
-            try {
+        } catch (Exception ex)
+        {
+            try
+            {
                 this.cerrar();
-            } catch (SQLException ex1) {
+            } catch (SQLException ex1)
+            {
                 JOptionPane.showMessageDialog(null, "No se ha podido cerrar la ventana\nLA aplicación se cerrará");
                 System.exit(0);
             }
-            
+
             JOptionPane.showMessageDialog(null, "Error accediendo nuevamente a la base de datos, se cerrará la ventana\n" + ex.getMessage());
         }
 
         //JOptionPane.showMessageDialog(this, jListTablas.getMaxSelectionIndex());
-        if (jListTablas.getMaxSelectionIndex() > -1) {
+        if (jListTablas.getMaxSelectionIndex() > -1)
+        {
             jBtnMostrarCampos.setEnabled(true);
         }
     }
