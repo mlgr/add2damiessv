@@ -217,4 +217,36 @@ public class DBManager {
 
         return lista;
     }
+    
+    /**
+     * Método para listar los campos de una tabla de la base de datos
+     * @param nombreTabla
+     * @return
+     * @throws SQLException 
+     */
+    public DefaultTableModel SelectSqlFromTabla(String sql, String nombreTabla) throws SQLException {
+        DefaultTableModel lista = new DefaultTableModel();
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+
+        List<Object[]> campos = this.listarCampos(nombreTabla);
+        java.lang.Object[] colIdentifiers = new java.lang.Object[campos.size()];
+        for(int i = 0; i<campos.size();i++)
+        {
+            Object[] c = campos.get(i);
+            colIdentifiers[i]= c[0].toString();
+        };
+        lista.setColumnIdentifiers(colIdentifiers);
+        while (rs.next()) {
+            Object[] obj = new Object[campos.size()];
+            for (int i = 0; i < campos.size(); i++)
+            {
+                Object[] campito = campos.get(i);
+                obj[i] = rs.getString(String.valueOf(campito[0]));
+            }
+            lista.addRow(obj);
+        }
+
+        return lista;
+    }
 }

@@ -9,6 +9,7 @@ import controlador.DBManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -119,6 +120,9 @@ public class JIntConectado extends javax.swing.JInternalFrame
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCampos = new javax.swing.JTable();
         jBtnMostrarCampos = new javax.swing.JButton();
+        jTEjecutarComando = new javax.swing.JTextField();
+        jBEjecutarComando = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jMc1Modificar.setText("Modificar Tabla");
         jPopupTablas.add(jMc1Modificar);
@@ -209,6 +213,18 @@ public class JIntConectado extends javax.swing.JInternalFrame
             }
         });
 
+        jBEjecutarComando.setText("Ejecutar Comando");
+        jBEjecutarComando.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jBEjecutarComandoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        jLabel4.setText("Comando Sql:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,6 +252,13 @@ public class JIntConectado extends javax.swing.JInternalFrame
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBEjecutarComando)
+                    .addComponent(jTEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +278,13 @@ public class JIntConectado extends javax.swing.JInternalFrame
                             .addComponent(jBAgregarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBtnMostrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -376,13 +405,81 @@ public class JIntConectado extends javax.swing.JInternalFrame
         }
     }//GEN-LAST:event_jMc4ExaminarActionPerformed
 
+    /**
+     * Método que llama a ejecutarConsulta si no está vacío el text box
+     *
+     * @param evt
+     */
+    private void jBEjecutarComandoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jBEjecutarComandoActionPerformed
+    {//GEN-HEADEREND:event_jBEjecutarComandoActionPerformed
+        if (!jTEjecutarComando.getText().isEmpty())
+        {
+            String sentencia = jTEjecutarComando.getText();
+            ejecutarComando(sentencia);
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "El campo Comando no puede estar vacío");
+        }
+
+    }//GEN-LAST:event_jBEjecutarComandoActionPerformed
+
+    /**
+     * Método que ejecuta un comando sql según el caso
+     */
+    private void ejecutarComando(String sql)
+    {
+        int caso = 0;
+        caso = sql.toUpperCase().contains("SELECT") ? 1 : caso;
+        caso = sql.toUpperCase().contains("INSERT") ? 2 : caso;
+        caso = sql.toUpperCase().contains("UPDATE") ? 3 : caso;
+        caso = sql.toUpperCase().contains("DELETE") ? 4 : caso;
+
+        switch (caso)
+        {
+            case 1: // select
+                int pos = sql.toUpperCase().lastIndexOf(" ");
+                String nombreTabla = sql.toLowerCase().substring(pos+1);
+
+                try
+                {
+                    DefaultTableModel dtm2;
+                    dtm2 = mydb.SelectSqlFromTabla(sql, nombreTabla);
+                    JFrameExaminarTabla jfeT = new JFrameExaminarTabla(dtm2);
+                    jfeT.setTitle(sql);
+                    jfeT.setVisible(true);
+                } catch (SQLException ex)
+                {
+                    JOptionPane.showMessageDialog(null, "No se han podido realizar la SELECT, compruebe el comando SQL");
+                }
+                break;
+            case 2: // insert
+            case 3: // update
+            case 4: // delete
+                try
+                {
+                    mydb.ejecutarInsercion(sql);
+                } catch (SQLException ex)
+                {
+                    JOptionPane.showMessageDialog(null, "No se han podido guardar los datos, compruebe el comando SQL");
+
+                }
+                break;
+            default:    // opción incorrecta
+                JOptionPane.showMessageDialog(null, "El comando introducido no es un comando Sql correcto");
+                break;
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAgregarTabla;
+    private javax.swing.JToggleButton jBEjecutarComando;
     private javax.swing.JButton jBtnMostrarCampos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList jListTablas;
     private javax.swing.JMenuItem jMc1Modificar;
     private javax.swing.JMenuItem jMc2Renombrar;
@@ -391,6 +488,7 @@ public class JIntConectado extends javax.swing.JInternalFrame
     private javax.swing.JPopupMenu jPopupTablas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTEjecutarComando;
     private javax.swing.JTable jTableCampos;
     // End of variables declaration//GEN-END:variables
 
