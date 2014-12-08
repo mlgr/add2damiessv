@@ -395,13 +395,15 @@ public class JIntConectado extends javax.swing.JInternalFrame
         DefaultTableModel dtm2;
         try
         {
+            mydb.conectar();
             dtm2 = mydb.SelectFromTabla(nombreTabla);
             JFrameExaminarTabla jfeT = new JFrameExaminarTabla(dtm2);
             jfeT.setTitle("Select * from " + nombreTabla);
             jfeT.setVisible(true);
-        } catch (SQLException ex)
+            mydb.cerrar();
+        } catch (SQLException | ClassNotFoundException ex)
         {
-            Logger.getLogger(JIntConectado.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido consultar la tabla");
         }
     }//GEN-LAST:event_jMc4ExaminarActionPerformed
 
@@ -438,16 +440,18 @@ public class JIntConectado extends javax.swing.JInternalFrame
         {
             case 1: // select
                 int pos = sql.toUpperCase().lastIndexOf(" ");
-                String nombreTabla = sql.toLowerCase().substring(pos+1);
+                String nombreTabla = sql.toLowerCase().substring(pos + 1);
 
                 try
                 {
                     DefaultTableModel dtm2;
+                    mydb.conectar();
                     dtm2 = mydb.SelectSqlFromTabla(sql, nombreTabla);
                     JFrameExaminarTabla jfeT = new JFrameExaminarTabla(dtm2);
                     jfeT.setTitle(sql);
                     jfeT.setVisible(true);
-                } catch (SQLException ex)
+                    mydb.cerrar();
+                } catch (SQLException | ClassNotFoundException ex)
                 {
                     JOptionPane.showMessageDialog(null, "No se han podido realizar la SELECT, compruebe el comando SQL");
                 }
