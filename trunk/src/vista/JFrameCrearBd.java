@@ -10,23 +10,19 @@ import javax.swing.JOptionPane;
  * @author Mª Luz García Rodríguez
  * @author Luis Massó Saiz
  */
-public class JFrameCrearBd extends javax.swing.JFrame
-{
+public class JFrameCrearBd extends javax.swing.JFrame {
 
     JIntTablasBd jFTabla;
     MdiPrueba mymdi;
 
-    
-    public void setMymdi(MdiPrueba mymdi)
-    {
+    public void setMymdi(MdiPrueba mymdi) {
         this.mymdi = mymdi;
     }
 
     /**
      * Creates new form JFrameCrearBd
      */
-    public JFrameCrearBd()
-    {
+    public JFrameCrearBd() {
         initComponents();
 
         //mymdi = new MdiPrueba();
@@ -41,8 +37,7 @@ public class JFrameCrearBd extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jTNombreBD = new javax.swing.JTextField();
@@ -50,26 +45,23 @@ public class JFrameCrearBd extends javax.swing.JFrame
         jBCrear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Creando Base de Datos");
+        setTitle("Crear Base Datos");
+        setResizable(false);
 
         jLabel1.setText("Nombre de la Base de Datos");
 
         jBCancelar.setText("Cancelar");
-        jBCancelar.setPreferredSize(new java.awt.Dimension(90, 40));
-        jBCancelar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBCancelar.setPreferredSize(new java.awt.Dimension(130, 40));
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);
             }
         });
 
         jBCrear.setText("Crear");
-        jBCrear.setPreferredSize(new java.awt.Dimension(90, 40));
-        jBCrear.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBCrear.setPreferredSize(new java.awt.Dimension(130, 40));
+        jBCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCrearActionPerformed(evt);
             }
         });
@@ -79,18 +71,15 @@ public class JFrameCrearBd extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jTNombreBD, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jBCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(54, 54, 54))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTNombreBD)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jBCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,42 +115,34 @@ public class JFrameCrearBd extends javax.swing.JFrame
      */
     private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
         String ArchivoBd = jTNombreBD.getText();
-        if (!ArchivoBd.contains(".sqlite"))
-        {
+        if (!ArchivoBd.contains(".sqlite")) {
             ArchivoBd = ArchivoBd + ".sqlite";
         }
-        if (new File(ArchivoBd).exists())
-        {
+        if (new File(ArchivoBd).exists()) {
             int respuesta = JOptionPane.showConfirmDialog(null, "El archivo " + ArchivoBd
                     + " ya existe.\n¿Quiere conectarse a él?", "Archivo existente", JOptionPane.OK_CANCEL_OPTION);
-            if (respuesta == JOptionPane.OK_OPTION)
-            {
-                try
-                {
+            if (respuesta == JOptionPane.OK_OPTION) {
+                try {
                     DBManager myDB = new DBManager(ArchivoBd);
                     mymdi.conectarBd(myDB);
                     this.jTNombreBD.setText("");
                     this.dispose();
-                } catch (Exception ex)
-                {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error creando la Base de Datos", "Creando Bd", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        } else
-        {
-            try
-            {
+        } else {
+            try {
                 DBManager myDB = new DBManager(ArchivoBd);
-                JOptionPane.showMessageDialog(null, "Base de datos " + ArchivoBd + " creada correctamente");
+                JOptionPane.showMessageDialog(null, "Base de datos " + ArchivoBd + " creada correctamente", "Creando BD", JOptionPane.PLAIN_MESSAGE);
                 jTNombreBD.setText("");
                 this.setVisible(false);
 
                 //jFTabla.setVisible(true);
                 jFTabla.setBdManager(myDB);
                 mymdi.setTablas(jFTabla);
-            } catch (Exception ex)
-            {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error accediendo a la Base de datos", "Abriendo BD", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jBCrearActionPerformed
@@ -169,43 +150,33 @@ public class JFrameCrearBd extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(JFrameCrearBd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(JFrameCrearBd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(JFrameCrearBd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrameCrearBd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new JFrameCrearBd().setVisible(true);
             }
         });

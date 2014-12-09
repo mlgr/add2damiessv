@@ -6,16 +6,17 @@
 package vista;
 
 import controlador.DBManager;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Toolkit;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.sqlite.core.DB;
 
 /**
  *
@@ -56,7 +57,13 @@ public class MdiPrueba extends javax.swing.JFrame {
      * Creates new form MdiPrueba
      */
     public MdiPrueba() {
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
+
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+
+        jLabel2.setSize(pantalla);
+        this.setMinimumSize(pantalla);
 
         String workingdir = System.getProperty("user.dir");
         jfileChooser = new JFileChooser(new File(workingdir));
@@ -78,7 +85,6 @@ public class MdiPrueba extends javax.swing.JFrame {
 
         desktopPane.add(conectado);
 
-        //jfFich = new JFrameFicheros();
         jfCrearBd = new JFrameCrearBd();
         jfCrearBd.setMymdi(this);
 
@@ -133,9 +139,10 @@ public class MdiPrueba extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BASE DE DATOS DE MOTOS");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setMaximumSize(new java.awt.Dimension(1500, 1500));
         desktopPane.add(jLabel2);
-        jLabel2.setBounds(0, 0, 750, 460);
+        jLabel2.setBounds(0, 0, 730, 160);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Ficheros");
@@ -265,13 +272,13 @@ public class MdiPrueba extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1241, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -332,7 +339,7 @@ public class MdiPrueba extends javax.swing.JFrame {
                 this.conectarBd(new DBManager(ficheroSeleccionado.getAbsolutePath()));
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Se ha producido un error abriendo la base de datos " + ficheroSeleccionado.getName()
-                        + "\nInténtelo de nuevo más tarde");
+                        + "\nInténtelo de nuevo más tarde", "Conectando BD", JOptionPane.ERROR_MESSAGE);
                 this.MenuDesconectarBDActionPerformed(evt);
             }
         }
@@ -350,12 +357,16 @@ public class MdiPrueba extends javax.swing.JFrame {
             MenuPropiedadesBD.setEnabled(false);
             MenuRenombrarBD.setEnabled(false);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se ha podido cerrar la conexión con la Base de Datos\nReinicie el programa o inténtelo de nuevo");
+            JOptionPane.showMessageDialog(null, "No se ha podido cerrar la conexión con la Base de Datos\nReinicie el programa o inténtelo de nuevo", "Cerrando BD", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_MenuDesconectarBDActionPerformed
 
     private void MenuEjecutarComandoBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEjecutarComandoBDActionPerformed
-        //
+        String comando = JOptionPane.showInputDialog(null, "Escriba el comando a ejecutar", "Comando", JOptionPane.PLAIN_MESSAGE);
+
+        if (!comando.equals("")) {
+            conectado.ejecutarComando(comando);
+        }
     }//GEN-LAST:event_MenuEjecutarComandoBDActionPerformed
 
     private void MenuRenombrarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRenombrarBDActionPerformed
@@ -365,20 +376,18 @@ public class MdiPrueba extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(MdiPrueba.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String nuevoNombre = JOptionPane.showInputDialog(null, "Escriba el nuevo nombre de archivo");
-        if (!nuevoNombre.equals("")) {
-//            try {
-//                //            try {
-//                //conectado.cerrar();
-//                conectarBd(new DBManager(conectado.getMydb().getArchivoBD()));
-//            } catch (Exception ex) {
-//                Logger.getLogger(MdiPrueba.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+        String nuevoNombre = JOptionPane.showInputDialog(null, "Escriba el nuevo nombre de archivo", "Renombrar", JOptionPane.PLAIN_MESSAGE);
+
+        if (nuevoNombre != null && !nuevoNombre.isEmpty()) {
+
             MenuDesconectarBDActionPerformed(null);
 
             if (!nuevoNombre.contains(".sqlite")) {
                 nuevoNombre += ".sqlite";
             }
+
+            nuevoNombre.replaceAll(" ", "_");
+
             if (nombreViejo.contains("\\")) {
                 nuevoNombre = nombreViejo.substring(0, nombreViejo.lastIndexOf("\\")) + "\\" + nuevoNombre;
             }
@@ -387,35 +396,27 @@ public class MdiPrueba extends javax.swing.JFrame {
 
             boolean renombrado = f1.renameTo(f2);
             if (renombrado) {
-
-                JOptionPane.showMessageDialog(null, "Fichero renombrado correctamente.");
+                JOptionPane.showMessageDialog(null, "Fichero renombrado correctamente.", "Renombrar", JOptionPane.PLAIN_MESSAGE);
                 try {
-//                        desktopPane.remove(conectado);
-//                        conectado.setMydb(new DBManager(nuevoNombre));
-//                        desktopPane.add(conectado);
                     conectarBd(new DBManager(nuevoNombre));
-                        //refrescarConectado();
-                    //MenuConectarBDActionPerformed(null);
-                    //MenuRenombrarBD.setEnabled(false);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error al abrir el fichero");
+                    JOptionPane.showMessageDialog(null, "Error al abrir el fichero", "Renombrar", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Error al renombrar el fichero.\n"
-                        + "Para poder renombrarlo, no debe haber mostrado los campos\n" 
-                        + "Inténtelo de nuevo ahora");
+                        + "Para poder renombrarlo, no debe haber mostrado los campos\n"
+                        + "Inténtelo de nuevo ahora", "Renombrar", JOptionPane.ERROR_MESSAGE);
                 try {
                     conectarBd(new DBManager(nombreViejo));
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error al abrir el fichero");
+                    JOptionPane.showMessageDialog(null, "Error al abrir el fichero", "Renombrar", JOptionPane.ERROR_MESSAGE);
                 }
-//                    MenuRenombrarBD.setEnabled(false);
-//                    refrescarConectado();
             }
         }
     }//GEN-LAST:event_MenuRenombrarBDActionPerformed
 
     private void MenuPropiedadesBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPropiedadesBDActionPerformed
+        conectado.refrescar();
         conectado.show();
     }//GEN-LAST:event_MenuPropiedadesBDActionPerformed
 
@@ -497,15 +498,19 @@ public class MdiPrueba extends javax.swing.JFrame {
             MenuEjecutarComandoBD.setEnabled(true);
             MenuPropiedadesBD.setEnabled(true);
             MenuRenombrarBD.setEnabled(true);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Prueba");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha podido conectar con la BD", "Conectando", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void refrescarConectado() {
         conectado.refrescar();
         conectado.show();
+    }
+
+    void anyadir(JIntExaminarTabla jfeT, String nombreTabla) {
+        jfeT.setTitle("Tabla: " + nombreTabla);
+        desktopPane.add(jfeT);
+        jfeT.show();
     }
 }
