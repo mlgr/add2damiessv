@@ -47,8 +47,7 @@ public class JFrameTablasBD extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jTNombreTabla = new javax.swing.JTextField();
@@ -74,34 +73,28 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jLabel1.setText("Nombre Tabla");
 
         jTableCampos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane1.setViewportView(jTableCampos);
 
         jBAgregarCampo.setText("Agregar campo");
-        jBAgregarCampo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBAgregarCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAgregarCampoActionPerformed(evt);
             }
         });
 
         jBCrearTabla.setText("Crear tabla");
-        jBCrearTabla.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBCrearTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCrearTablaActionPerformed(evt);
             }
         });
@@ -115,10 +108,8 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jCBTipoDatos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "INTEGER", "BOOL", "DOUBLE", "FLOAT", "REAL", "CHAR", "TEXT", "VARCHAR", "BLOB", "NUMERIC", "DATETIME", "INTEGER (strict)", "REAL (strict)", "TEXT (strict)" }));
 
         jChClaveP.setText("Clave Primaria");
-        jChClaveP.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jChClaveP.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jChClavePStateChanged(evt);
             }
         });
@@ -126,26 +117,20 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jChNulos.setText("Permitir Nulo");
 
         jChUnica.setText("Unica");
-        jChUnica.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jChUnica.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jChUnicaStateChanged(evt);
             }
         });
-        jChUnica.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jChUnica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jChUnicaActionPerformed(evt);
             }
         });
 
         jChAutoinc.setText("Autoincrementar");
-        jChAutoinc.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jChAutoinc.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jChAutoincStateChanged(evt);
             }
         });
@@ -198,19 +183,15 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         );
 
         jBcancelar.setText("Cancelar");
-        jBcancelar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBcancelarActionPerformed(evt);
             }
         });
 
         jBTerminar.setText("Terminar");
-        jBTerminar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBTerminarActionPerformed(evt);
             }
         });
@@ -266,10 +247,6 @@ public class JFrameTablasBD extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jChUnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChUnicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jChUnicaActionPerformed
 
     /**
      * Método para cancelar la creación de la tabla
@@ -327,6 +304,10 @@ public class JFrameTablasBD extends javax.swing.JFrame {
         jTNombreTabla.setText(nombreTabla);
     }//GEN-LAST:event_jBAgregarCampoActionPerformed
 
+    private void jBTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTerminarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBTerminarActionPerformed
+
     /**
      * Método que controla los CheckButton cuando se marca el autoincremento
      *
@@ -350,25 +331,11 @@ public class JFrameTablasBD extends javax.swing.JFrame {
             jChNulos.setEnabled(true);
             jChUnica.setEnabled(true);
         }
-
     }//GEN-LAST:event_jChAutoincStateChanged
 
-    /**
-     * Método que controla los CheckButton cuando se marca el de Clave Primaria
-     *
-     * @param evt
-     */
-    private void jChClavePStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jChClavePStateChanged
-        if (jChClaveP.isSelected()) {
-            jChNulos.setSelected(false);
-            jChUnica.setSelected(false);
-            jChNulos.setEnabled(false);
-            jChUnica.setEnabled(false);
-        } else {
-            jChNulos.setEnabled(true);
-            jChUnica.setEnabled(true);
-        }
-    }//GEN-LAST:event_jChClavePStateChanged
+    private void jChUnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChUnicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jChUnicaActionPerformed
 
     /**
      * Método que controla los CheckButton cuando se marca el de Única
@@ -389,6 +356,23 @@ public class JFrameTablasBD extends javax.swing.JFrame {
             jChAutoinc.setEnabled(true);
         }
     }//GEN-LAST:event_jChUnicaStateChanged
+
+    /**
+     * Método que controla los CheckButton cuando se marca el de Clave Primaria
+     *
+     * @param evt
+     */
+    private void jChClavePStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jChClavePStateChanged
+        if (jChClaveP.isSelected()) {
+            jChNulos.setSelected(false);
+            jChUnica.setSelected(false);
+            jChNulos.setEnabled(false);
+            jChUnica.setEnabled(false);
+        } else {
+            jChNulos.setEnabled(true);
+            jChUnica.setEnabled(true);
+        }
+    }//GEN-LAST:event_jChClavePStateChanged
 
     private void jBCrearTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearTablaActionPerformed
 
@@ -425,8 +409,8 @@ public class JFrameTablasBD extends javax.swing.JFrame {
             if (num_pk > 1) {
                 cadenaSql = cadenaSql.replace(" AUTOINCREMENT ", "");
                 JOptionPane.showMessageDialog(this, "No se permite tener un campo "
-                        + "AUTOINCREMENT si la clave primaria tiene más de un campo\n"
-                        + "Se eliminará esa opción");
+                    + "AUTOINCREMENT si la clave primaria tiene más de un campo\n"
+                    + "Se eliminará esa opción");
             } else if (num_pk == 1) {
                 cadenaSql = cadenaSql.replace(" AUTOINCREMENT ", " PRIMARY KEY AUTOINCREMENT ");
                 cadenaSql = cadenaSql.replace(pkString + "),", "");
@@ -441,7 +425,7 @@ public class JFrameTablasBD extends javax.swing.JFrame {
             }
 
             JOptionPane.showConfirmDialog(this, cadenaSql);
-            
+
             cadenaSql += "\n);";
 
             pkString = "\nPRIMARY KEY (";
@@ -453,7 +437,7 @@ public class JFrameTablasBD extends javax.swing.JFrame {
                 BdManager.ejecutarInsercion(cadenaSql);
                 BdManager.cerrar();
                 JOptionPane.showMessageDialog(rootPane, "Tabla "
-                        + jTNombreTabla.getText() + " creada correctamente");
+                    + jTNombreTabla.getText() + " creada correctamente");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(JFrameTablasBD.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -465,10 +449,6 @@ public class JFrameTablasBD extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jBCrearTablaActionPerformed
-
-    private void jBTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTerminarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jBTerminarActionPerformed
 
     /**
      * @param args the command line arguments

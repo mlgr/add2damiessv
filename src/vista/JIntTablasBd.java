@@ -63,8 +63,7 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jBcancelar = new javax.swing.JButton();
@@ -92,34 +91,28 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
         jLabel1.setText("Nombre Tabla");
 
         jBcancelar.setText("Cancelar");
-        jBcancelar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBcancelarActionPerformed(evt);
             }
         });
 
         jTableCampos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane1.setViewportView(jTableCampos);
 
         jBAgregarCampo.setText("Agregar campo");
-        jBAgregarCampo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBAgregarCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAgregarCampoActionPerformed(evt);
             }
         });
@@ -133,10 +126,8 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
         jCBTipoDatos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "INTEGER", "BOOL", "DOUBLE", "FLOAT", "REAL", "CHAR", "TEXT", "VARCHAR", "NUMERIC" }));
 
         jChClaveP.setText("Clave Primaria");
-        jChClaveP.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jChClaveP.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jChClavePStateChanged(evt);
             }
         });
@@ -144,26 +135,20 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
         jChNulos.setText("Permitir Nulo");
 
         jChUnica.setText("Unica");
-        jChUnica.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jChUnica.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jChUnicaStateChanged(evt);
             }
         });
-        jChUnica.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jChUnica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jChUnicaActionPerformed(evt);
             }
         });
 
         jChAutoinc.setText("Autoincrementar");
-        jChAutoinc.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jChAutoinc.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jChAutoincStateChanged(evt);
             }
         });
@@ -216,19 +201,15 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
         );
 
         jBCrearTabla.setText("Crear tabla");
-        jBCrearTabla.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBCrearTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCrearTablaActionPerformed(evt);
             }
         });
 
         jBTerminar.setText("Terminar");
-        jBTerminar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBTerminarActionPerformed(evt);
             }
         });
@@ -238,31 +219,32 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
-                        .addGap(6, 6, 6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jBAgregarCampo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBCrearTabla)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBTerminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBcancelar)))
-                .addGap(6, 6, 6))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane1)
+                            .addGap(6, 6, 6))
+                        .addGroup(layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBAgregarCampo)
+                            .addGap(118, 118, 118)
+                            .addComponent(jBCrearTabla)
+                            .addGap(18, 18, 18)
+                            .addComponent(jBTerminar)
+                            .addGap(18, 18, 18)
+                            .addComponent(jBcancelar)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +254,7 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -294,12 +276,12 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
             if (opcion == JOptionPane.OK_OPTION) {
                 File file = new File(BdManager.getArchivoBD());
                 if (file.delete()) {
-                    JOptionPane.showMessageDialog(null, "Archivo borrado correctamenre.");
+                    JOptionPane.showMessageDialog(null, "Archivo borrado correctamenre.", "Eliminando Archivo", JOptionPane.PLAIN_MESSAGE);
                     LimpiarCampos();
                     InicializarDtm();
                     this.setVisible(false);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se ha podido borrar el archivo");
+                    JOptionPane.showMessageDialog(null, "No se ha podido borrar el archivo", "Eliminando Archivo", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } else if (control == 1) {
@@ -332,7 +314,7 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
             jBCrearTabla.setEnabled(true);
 
         } else {
-            JOptionPane.showMessageDialog(null, "El nombre del campo no puede estar vacío");
+            JOptionPane.showMessageDialog(null, "El nombre del campo no puede estar vacío", "Agregar Campo", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jBAgregarCampoActionPerformed
@@ -391,7 +373,7 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
     private void jBCrearTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearTablaActionPerformed
 
         if (jTNombreTabla.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Debe introducir un nombre para la tabla");
+            JOptionPane.showMessageDialog(null, "Debe introducir un nombre para la tabla", "Creando Tabla", JOptionPane.ERROR_MESSAGE);
         } else {
             String pkString = "\nPRIMARY KEY (";
             String uniqueString = "\nUNIQUE (";
@@ -424,7 +406,7 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
                 cadenaSql = cadenaSql.replace(" AUTOINCREMENT ", "");
                 JOptionPane.showMessageDialog(this, "No se permite tener un campo "
                         + "AUTOINCREMENT si la clave primaria tiene más de un campo\n"
-                        + "Se eliminará esa opción");
+                        + "Se eliminará esa opción", "Información", JOptionPane.PLAIN_MESSAGE);
             } else if (num_pk == 1) {
                 cadenaSql = cadenaSql.replace(" AUTOINCREMENT ", " PRIMARY KEY AUTOINCREMENT ");
                 cadenaSql = cadenaSql.replace(pkString + "),", "");
@@ -449,11 +431,9 @@ public class JIntTablasBd extends javax.swing.JInternalFrame {
                 BdManager.ejecutarInsercion(cadenaSql);
                 BdManager.cerrar();
                 JOptionPane.showMessageDialog(rootPane, "Tabla "
-                        + jTNombreTabla.getText() + " creada correctamente");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(JFrameTablasBD.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(JFrameTablasBD.class.getName()).log(Level.SEVERE, null, ex);
+                        + jTNombreTabla.getText() + " creada correctamente", "Creando Tabla", JOptionPane.PLAIN_MESSAGE);
+            } catch (SQLException | ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(rootPane, "No se ha podido crear la tabla", "Creando Tabla", JOptionPane.PLAIN_MESSAGE);
             }
 
             jTNombreTabla.setText("");

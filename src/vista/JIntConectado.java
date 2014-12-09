@@ -22,8 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alumno
  */
-public class JIntConectado extends javax.swing.JInternalFrame
-{
+public class JIntConectado extends javax.swing.JInternalFrame {
 
     private DBManager mydb;
     private DefaultListModel modeloLista;
@@ -33,13 +32,11 @@ public class JIntConectado extends javax.swing.JInternalFrame
 
     private MdiPrueba padre;
 
-    public void setPadre(MdiPrueba padre)
-    {
+    public void setPadre(MdiPrueba padre) {
         this.padre = padre;
     }
 
-    public DBManager getMydb()
-    {
+    public DBManager getMydb() {
         return mydb;
     }
 
@@ -50,27 +47,22 @@ public class JIntConectado extends javax.swing.JInternalFrame
      * @param mydb
      * @throws Exception
      */
-    public void setMydb(DBManager mydb) throws Exception
-    {
+    public void setMydb(DBManager mydb) throws Exception {
         this.mydb = mydb;
-        try
-        {
+        try {
             mydb.conectar();
             modeloLista = mydb.listarTablas();
             jListTablas.setModel(modeloLista);
             jListTablas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             jListTablas.setSelectedIndex(0);
-        } catch (Exception ex)
-        {
-            try
-            {
+        } catch (Exception ex) {
+            try {
                 this.cerrar();
-            } catch (SQLException ex1)
-            {
-                JOptionPane.showMessageDialog(null, "No se ha podido cerrar la ventana\nLA aplicación se cerrará");
+            } catch (SQLException ex1) {
+                JOptionPane.showMessageDialog(null, "No se ha podido cerrar la ventana\nLA aplicación se cerrará", "Cerrando Aplicación", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
-            JOptionPane.showMessageDialog(null, "Error accediendo a la base de datos, se cerrará la ventana\n" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error accediendo a la base de datos, se cerrará la ventana", "Acceso BD", JOptionPane.ERROR_MESSAGE);
             throw new Exception("NOTADB");
         }
     }
@@ -81,16 +73,14 @@ public class JIntConectado extends javax.swing.JInternalFrame
      *
      * @param texto
      */
-    public void setjLabel1Text(String texto)
-    {
+    public void setjLabel1Text(String texto) {
         this.jLabel1.setText(texto);
     }
 
     /**
      * Creates new form JIntConectado
      */
-    public JIntConectado()
-    {
+    public JIntConectado() {
         initComponents();
 
         dtm = new DefaultTableModel();
@@ -103,8 +93,7 @@ public class JIntConectado extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPopupTablas = new javax.swing.JPopupMenu();
         jMc1Modificar = new javax.swing.JMenuItem();
@@ -112,46 +101,47 @@ public class JIntConectado extends javax.swing.JInternalFrame
         jMc3Borrar = new javax.swing.JMenuItem();
         jMc4Examinar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
+        jTEjecutarComando = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCampos = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListTablas = new javax.swing.JList();
         jBAgregarTabla = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableCampos = new javax.swing.JTable();
         jBtnMostrarCampos = new javax.swing.JButton();
-        jTEjecutarComando = new javax.swing.JTextField();
-        jBEjecutarComando = new javax.swing.JToggleButton();
-        jLabel4 = new javax.swing.JLabel();
+        jBEjecutarComando = new javax.swing.JButton();
 
         jMc1Modificar.setText("Modificar Tabla");
+        jMc1Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMc1ModificarActionPerformed(evt);
+            }
+        });
         jPopupTablas.add(jMc1Modificar);
 
         jMc2Renombrar.setText("Renombrar Tabla");
-        jMc2Renombrar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jMc2Renombrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMc2RenombrarActionPerformed(evt);
             }
         });
         jPopupTablas.add(jMc2Renombrar);
 
         jMc3Borrar.setText("Borrar Tabla");
-        jMc3Borrar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jMc3Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMc3BorrarActionPerformed(evt);
             }
         });
         jPopupTablas.add(jMc3Borrar);
 
         jMc4Examinar.setText("Examinar Tabla");
-        jMc4Examinar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jMc4Examinar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMc4ExaminarActionPerformed(evt);
             }
         });
@@ -163,10 +153,51 @@ public class JIntConectado extends javax.swing.JInternalFrame
         setResizable(true);
         setTitle("Propiedades de Tabla");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText(".");
 
-        jListTablas.setModel(new javax.swing.AbstractListModel()
-        {
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        jLabel4.setText("Comando Sql:");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("CAMPOS");
+
+        jTableCampos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableCampos);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
+        );
+
+        jListTablas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
@@ -177,114 +208,99 @@ public class JIntConectado extends javax.swing.JInternalFrame
         jScrollPane1.setViewportView(jListTablas);
 
         jBAgregarTabla.setText("Agregar tabla");
-        jBAgregarTabla.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBAgregarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAgregarTablaActionPerformed(evt);
             }
         });
 
         jLabel2.setText("TABLAS");
 
-        jLabel3.setText("CAMPOS");
-
-        jTableCampos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String []
-            {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTableCampos);
-
         jBtnMostrarCampos.setText("Ver campos");
-        jBtnMostrarCampos.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jBtnMostrarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnMostrarCamposActionPerformed(evt);
             }
         });
 
-        jBEjecutarComando.setText("Ejecutar Comando");
-        jBEjecutarComando.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jBEjecutarComandoActionPerformed(evt);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jBAgregarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBtnMostrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAgregarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnMostrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jBEjecutarComando.setText("Ejecutar comando");
+        jBEjecutarComando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEjecutarComando2ActionPerformed(evt);
             }
         });
-
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        jLabel4.setText("Comando Sql:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(200, 200, 200))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-                        .addGap(76, 76, 76))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBAgregarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBtnMostrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBEjecutarComando)
-                    .addComponent(jTEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jTEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, 1194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(27, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBEjecutarComando)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBAgregarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnMostrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addComponent(jBEjecutarComando, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -302,17 +318,14 @@ public class JIntConectado extends javax.swing.JInternalFrame
         String nombreTabla = jListTablas.getSelectedValue().toString();
 
         InicializarDtm();
-        try
-        {
-            mydb.conectar();
+        try {
+            // mydb.conectar();
             obj = mydb.listarCampos(nombreTabla);
-            mydb.cerrar();
-        } catch (ClassNotFoundException | SQLException ex)
-        {
+            // mydb.cerrar();
+        } catch (SQLException ex) {
             Logger.getLogger(JIntConectado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (int i = 0; i < obj.size(); i++)
-        {
+        for (int i = 0; i < obj.size(); i++) {
             Object[] o = obj.get(i);
             dtm.addRow(o);
         }
@@ -340,20 +353,17 @@ public class JIntConectado extends javax.swing.JInternalFrame
     private void jMc2RenombrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMc2RenombrarActionPerformed
     {//GEN-HEADEREND:event_jMc2RenombrarActionPerformed
         String viejoNombre = jListTablas.getSelectedValue().toString();
-        String nuevoNombre = JOptionPane.showInputDialog(null, "Escriba el nuevo nombre de la tabla");
+        String nuevoNombre = JOptionPane.showInputDialog(null, "Escriba el nuevo nombre de la tabla", "Renombrar", JOptionPane.PLAIN_MESSAGE);
 
-        if (!nuevoNombre.isEmpty())
-        {
-            try
-            {
+        if (nuevoNombre != null && !nuevoNombre.isEmpty()) {
+            try {
                 String sql = String.format("ALTER TABLE %s RENAME TO %s", viejoNombre, nuevoNombre);
                 boolean r = mydb.ejecutarInsercion(sql);
 
-                JOptionPane.showMessageDialog(null, "Tabla renombrada correctamente");
+                JOptionPane.showMessageDialog(null, "Tabla renombrada correctamente", "Renombrar", JOptionPane.PLAIN_MESSAGE);
                 refrescar();
-            } catch (SQLException ex)
-            {
-                JOptionPane.showMessageDialog(null, "No se ha podido renombrar la tabla");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha podido renombrar la tabla", "Renombrar", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jMc2RenombrarActionPerformed
@@ -368,17 +378,14 @@ public class JIntConectado extends javax.swing.JInternalFrame
         String nombreTabla = jListTablas.getSelectedValue().toString();
 
         if (JOptionPane.showConfirmDialog(null, "¿Está seguro de borrar la tabla " + nombreTabla,
-                "Eliminar Tabla", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-        {
-            try
-            {
+                "Eliminar Tabla", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            try {
                 String sql = String.format("DROP TABLE %s ", nombreTabla);
                 boolean r = mydb.ejecutarInsercion(sql);
-                JOptionPane.showMessageDialog(null, "Tabla eliminada correctamente");
+                JOptionPane.showMessageDialog(null, "Tabla eliminada correctamente", "Eliminar Tabla", JOptionPane.PLAIN_MESSAGE);
                 refrescar();
-            } catch (SQLException ex)
-            {
-                JOptionPane.showMessageDialog(null, "No se ha podido eliminar la tabla");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha podido eliminar la tabla", "Eliminar Tabla", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jMc3BorrarActionPerformed
@@ -393,17 +400,18 @@ public class JIntConectado extends javax.swing.JInternalFrame
     {//GEN-HEADEREND:event_jMc4ExaminarActionPerformed
         String nombreTabla = jListTablas.getSelectedValue().toString();
         DefaultTableModel dtm2;
-        try
-        {
-            mydb.conectar();
+        try {
+            // mydb.conectar();
             dtm2 = mydb.SelectFromTabla(nombreTabla);
-            JFrameExaminarTabla jfeT = new JFrameExaminarTabla(dtm2);
-            jfeT.setTitle("Select * from " + nombreTabla);
-            jfeT.setVisible(true);
-            mydb.cerrar();
-        } catch (SQLException | ClassNotFoundException ex)
-        {
-            JOptionPane.showMessageDialog(null, "No se ha podido consultar la tabla");
+            JIntExaminarTabla jfeT = new JIntExaminarTabla(dtm2);
+            padre.anyadir(jfeT, nombreTabla);
+//            padre.add(jfeT);
+//            jfeT.show();
+//            jfeT.setTitle("Select * from " + nombreTabla);
+//            jfeT.setVisible(true);
+            //  mydb.cerrar();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se ha podido consultar la tabla", "Examinar Tabla", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMc4ExaminarActionPerformed
 
@@ -412,64 +420,64 @@ public class JIntConectado extends javax.swing.JInternalFrame
      *
      * @param evt
      */
-    private void jBEjecutarComandoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jBEjecutarComandoActionPerformed
-    {//GEN-HEADEREND:event_jBEjecutarComandoActionPerformed
-        if (!jTEjecutarComando.getText().isEmpty())
-        {
+    private void jBEjecutarComando2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jBEjecutarComando2ActionPerformed
+    {//GEN-HEADEREND:event_jBEjecutarComando2ActionPerformed
+        if (!jTEjecutarComando.getText().isEmpty()) {
             String sentencia = jTEjecutarComando.getText();
             ejecutarComando(sentencia);
-        } else
-        {
-            JOptionPane.showMessageDialog(null, "El campo Comando no puede estar vacío");
+        } else {
+            JOptionPane.showMessageDialog(null, "El campo Comando no puede estar vacío", "Ejecutar Comando", JOptionPane.ERROR_MESSAGE);
         }
 
-    }//GEN-LAST:event_jBEjecutarComandoActionPerformed
+    }//GEN-LAST:event_jBEjecutarComando2ActionPerformed
+
+    private void jMc1ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMc1ModificarActionPerformed
+        String nombreTabla = jListTablas.getSelectedValue().toString();
+        JFrameModificar jfM = new JFrameModificar(nombreTabla, padre, mydb);
+        jfM.setVisible(true);
+        refrescar();
+    }//GEN-LAST:event_jMc1ModificarActionPerformed
 
     /**
      * Método que ejecuta un comando sql según el caso
      */
-    private void ejecutarComando(String sql)
-    {
+    public void ejecutarComando(String sql) {
         int caso = 0;
-        caso = sql.toUpperCase().contains("SELECT") ? 1 : caso;
-        caso = sql.toUpperCase().contains("INSERT") ? 2 : caso;
-        caso = sql.toUpperCase().contains("UPDATE") ? 3 : caso;
-        caso = sql.toUpperCase().contains("DELETE") ? 4 : caso;
+        caso = sql.toUpperCase().startsWith("SELECT") ? 1 : caso;
+        caso = sql.toUpperCase().startsWith("INSERT") ? 2 : caso;
+        caso = sql.toUpperCase().startsWith("UPDATE") ? 3 : caso;
+        caso = sql.toUpperCase().startsWith("DELETE") ? 4 : caso;
 
-        switch (caso)
-        {
+        switch (caso) {
             case 1: // select
-                int pos = sql.toUpperCase().lastIndexOf(" ");
-                String nombreTabla = sql.toLowerCase().substring(pos + 1);
+//                int pos = sql.toUpperCase().lastIndexOf(" ");
+//                String nombreTabla = sql.toLowerCase().substring(pos + 1);
 
-                try
-                {
+                try {
                     DefaultTableModel dtm2;
-                    mydb.conectar();
-                    dtm2 = mydb.SelectSqlFromTabla(sql, nombreTabla);
-                    JFrameExaminarTabla jfeT = new JFrameExaminarTabla(dtm2);
-                    jfeT.setTitle(sql);
-                    jfeT.setVisible(true);
-                    mydb.cerrar();
-                } catch (SQLException | ClassNotFoundException ex)
-                {
-                    JOptionPane.showMessageDialog(null, "No se han podido realizar la SELECT, compruebe el comando SQL");
+                    // mydb.conectar();
+                    dtm2 = mydb.SelectSqlFromTabla(sql);
+                    JIntExaminarTabla jfeT = new JIntExaminarTabla(dtm2);
+                    padre.anyadir(jfeT, sql);
+//                    jfeT.setTitle(sql);
+//                    jfeT.setVisible(true);
+                    //  mydb.cerrar();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "No se han podido realizar la SELECT, compruebe el comando SQL", "Ejecutar Comando", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case 2: // insert
             case 3: // update
             case 4: // delete
-                try
-                {
+                try {
                     mydb.ejecutarInsercion(sql);
-                } catch (SQLException ex)
-                {
-                    JOptionPane.showMessageDialog(null, "No se han podido guardar los datos, compruebe el comando SQL");
-
+                    JOptionPane.showMessageDialog(null, "Comando realizado con éxito", "Ejecutar Comando", JOptionPane.PLAIN_MESSAGE);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "No se han podido guardar los datos, compruebe el comando SQL", "Ejecutar Comando", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             default:    // opción incorrecta
-                JOptionPane.showMessageDialog(null, "El comando introducido no es un comando Sql correcto");
+                JOptionPane.showMessageDialog(null, "El comando introducido no es un comando Sql correcto", "Ejecutar Comando", JOptionPane.ERROR_MESSAGE);
                 break;
         }
 
@@ -478,7 +486,7 @@ public class JIntConectado extends javax.swing.JInternalFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAgregarTabla;
-    private javax.swing.JToggleButton jBEjecutarComando;
+    private javax.swing.JButton jBEjecutarComando;
     private javax.swing.JButton jBtnMostrarCampos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -489,6 +497,8 @@ public class JIntConectado extends javax.swing.JInternalFrame
     private javax.swing.JMenuItem jMc2Renombrar;
     private javax.swing.JMenuItem jMc3Borrar;
     private javax.swing.JMenuItem jMc4Examinar;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupTablas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -499,21 +509,19 @@ public class JIntConectado extends javax.swing.JInternalFrame
     /**
      * Método para borrar todas las lineas del dtm
      */
-    private void InicializarDtm()
-    {
+    private void InicializarDtm() {
         // Eliminamos  las filas del dtm
         tabla = this.jTableCampos;
 
         tabla.setModel(dtm);
-        for (int i = dtm.getRowCount() - 1; i >= 0; i--)
-        {
+        for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
             dtm.removeRow(i);
         }
 
-        java.lang.Object[] colIdentifiers =
-        {
-            "Nombre campo", "Tipo de datos", "Valor nulo", "Es PK"
-        };
+        java.lang.Object[] colIdentifiers
+                = {
+                    "Nombre campo", "Tipo de datos", "Valor nulo", "Es PK"
+                };
 
         dtm.setColumnIdentifiers(colIdentifiers);
     }
@@ -523,16 +531,13 @@ public class JIntConectado extends javax.swing.JInternalFrame
      *
      * @throws SQLException
      */
-    public void cerrar() throws SQLException
-    {
-        try
-        {
+    public void cerrar() throws SQLException {
+        try {
             mydb.cerrar();
             InicializarDtm();
             jLabel3.setText("CAMPOS");
             this.setVisible(false);
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new SQLException(e);
         }
     }
@@ -543,24 +548,21 @@ public class JIntConectado extends javax.swing.JInternalFrame
      * @param md
      * @return
      */
-    public boolean abrir(DBManager md)
-    {
+    public boolean abrir(DBManager md) {
         jLabel3.setText("CAMPOS");
+        jTEjecutarComando.setText("");
 
-        try
-        {
+        try {
             jBtnMostrarCampos.setEnabled(false);
             this.setjLabel1Text("Conectado con la Base de Datos " + md.getArchivoBD());
             InicializarDtm();
             this.setMydb(md);
 
-            if (jListTablas.getMaxSelectionIndex() > -1)
-            {
+            if (jListTablas.getMaxSelectionIndex() > -1) {
                 jBtnMostrarCampos.setEnabled(true);
             }
             return true;
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
             return false;
         }
     }
@@ -568,15 +570,13 @@ public class JIntConectado extends javax.swing.JInternalFrame
     /**
      * Método para volver a cargar los campos de la tabla y de la lista
      */
-    public void refrescar()
-    {
+    public void refrescar() {
         jLabel3.setText("CAMPOS");
-
+        jTEjecutarComando.setText("");
         jBtnMostrarCampos.setEnabled(false);
         this.setjLabel1Text("Conectado con la Base de Datos " + mydb.getArchivoBD());
         InicializarDtm();
-        try
-        {
+        try {
             mydb.conectar();
             modeloLista = mydb.listarTablas();
             jListTablas.setModel(modeloLista);
@@ -584,23 +584,18 @@ public class JIntConectado extends javax.swing.JInternalFrame
             jListTablas.setSelectedIndex(0);
 
             //mydb.cerrar();
-        } catch (Exception ex)
-        {
-            try
-            {
+        } catch (Exception ex) {
+            try {
                 this.cerrar();
-            } catch (SQLException ex1)
-            {
-                JOptionPane.showMessageDialog(null, "No se ha podido cerrar la ventana\nLA aplicación se cerrará");
+            } catch (SQLException ex1) {
+                JOptionPane.showMessageDialog(null, "No se ha podido cerrar la ventana\nLA aplicación se cerrará", "Cerrando Aplicación", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
 
-            JOptionPane.showMessageDialog(null, "Error accediendo nuevamente a la base de datos, se cerrará la ventana\n" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error accediendo nuevamente a la base de datos, se cerrará la ventana", "Acceder a BD", JOptionPane.ERROR_MESSAGE);
         }
 
-        //JOptionPane.showMessageDialog(this, jListTablas.getMaxSelectionIndex());
-        if (jListTablas.getMaxSelectionIndex() > -1)
-        {
+        if (jListTablas.getMaxSelectionIndex() > -1) {
             jBtnMostrarCampos.setEnabled(true);
         }
     }

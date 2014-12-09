@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Moto;
 
@@ -40,17 +41,18 @@ public class DBManager {
     /**
      * ************* GETTERS AND SETTERS *****************
      */
-     public String getArchivoBD() {
+    public String getArchivoBD() {
         return archivoBD;
     }
-    
+
     /**
      * *************** MÉTODOS ****************************
      */
     /**
      * Método para hacer la conexión con la BD
+     *
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void conectar() throws ClassNotFoundException, SQLException {
         // load the sqlite-JDBC driver using the current class loader
@@ -62,7 +64,8 @@ public class DBManager {
 
     /**
      * Método para cerrar la conexión con la BD
-     * @throws SQLException 
+     *
+     * @throws SQLException
      */
     public void cerrar() throws SQLException {
         conn.close();
@@ -70,9 +73,10 @@ public class DBManager {
 
     /**
      * Método que ejecuta una sentencia sql (INSERT, UPDATE, DELETE)
+     *
      * @param sql
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public boolean ejecutarInsercion(String sql) throws SQLException {
         Statement st = conn.createStatement();
@@ -83,9 +87,10 @@ public class DBManager {
 
     /**
      * Método que realiza una consulta a la BD (SELECT)
+     *
      * @param sql
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public List<Moto> realizarConsulta(String sql) throws SQLException {
         List<Moto> lista = new ArrayList<>();
@@ -102,7 +107,7 @@ public class DBManager {
             double pre = rs.getDouble("precio");
             String ima = rs.getString("imagen");
 
-            lista.add(new Moto(mar,mod,cil,pot,cili,ref,pre,ima));
+            lista.add(new Moto(mar, mod, cil, pot, cili, ref, pre, ima));
         }
         st.close();
 
@@ -111,8 +116,9 @@ public class DBManager {
 
     /**
      * Métdoo para listar las tablas de la base de datos
+     *
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public DefaultListModel listarTablas() throws SQLException {
         DefaultListModel lista = new DefaultListModel();
@@ -127,12 +133,13 @@ public class DBManager {
         st.close();
         return lista;
     }
- 
+
     /**
      * Método para listar los campos de una tabla de la base de datos
+     *
      * @param nombreTabla
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public List<Object[]> listarCampos(String nombreTabla) throws SQLException {
         List<Object[]> lista = new ArrayList<Object[]>();
@@ -153,12 +160,13 @@ public class DBManager {
 
         return lista;
     }
-    
+
     /**
      * Método para hacer una select * from tabla
+     *
      * @param nombreTabla
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public DefaultTableModel SelectFromTabla(String nombreTabla) throws SQLException {
         DefaultTableModel lista = new DefaultTableModel();
@@ -167,16 +175,14 @@ public class DBManager {
 
         List<Object[]> campos = this.listarCampos(nombreTabla);
         java.lang.Object[] colIdentifiers = new java.lang.Object[campos.size()];
-        for(int i = 0; i<campos.size();i++)
-        {
+        for (int i = 0; i < campos.size(); i++) {
             Object[] c = campos.get(i);
-            colIdentifiers[i]= c[0].toString();
+            colIdentifiers[i] = c[0].toString();
         };
         lista.setColumnIdentifiers(colIdentifiers);
         while (rs.next()) {
             Object[] obj = new Object[campos.size()];
-            for (int i = 0; i < campos.size(); i++)
-            {
+            for (int i = 0; i < campos.size(); i++) {
                 Object[] campito = campos.get(i);
                 obj[i] = rs.getString(String.valueOf(campito[0]));
             }
@@ -185,30 +191,29 @@ public class DBManager {
 
         return lista;
     }
-    
+
     /**
      * Método para listar los campos de una tabla de la base de datos
+     *
      * @param nombreTabla
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public DefaultTableModel SelectFromTablaPersonalizado(String nombreTabla, String camposSql) throws SQLException {
         DefaultTableModel lista = new DefaultTableModel();
         Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("Select "+ camposSql +" from '" + nombreTabla + "'");
+        ResultSet rs = st.executeQuery("Select " + camposSql + " from '" + nombreTabla + "'");
 
         List<Object[]> campos = this.listarCampos(nombreTabla);
         java.lang.Object[] colIdentifiers = new java.lang.Object[campos.size()];
-        for(int i = 0; i<campos.size();i++)
-        {
+        for (int i = 0; i < campos.size(); i++) {
             Object[] c = campos.get(i);
-            colIdentifiers[i]= c[0].toString();
+            colIdentifiers[i] = c[0].toString();
         };
         lista.setColumnIdentifiers(colIdentifiers);
         while (rs.next()) {
             Object[] obj = new Object[campos.size()];
-            for (int i = 0; i < campos.size(); i++)
-            {
+            for (int i = 0; i < campos.size(); i++) {
                 Object[] campito = campos.get(i);
                 obj[i] = rs.getString(String.valueOf(campito[0]));
             }
@@ -217,30 +222,50 @@ public class DBManager {
 
         return lista;
     }
-    
+
     /**
      * Método para listar los campos de una tabla de la base de datos
-     * @param nombreTabla
+     *
+     * @param sql
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public DefaultTableModel SelectSqlFromTabla(String sql, String nombreTabla) throws SQLException {
+    public DefaultTableModel SelectSqlFromTabla(String sql) throws SQLException {
+        sql = sql.toUpperCase();
+
         DefaultTableModel lista = new DefaultTableModel();
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
 
-        List<Object[]> campos = this.listarCampos(nombreTabla);
-        java.lang.Object[] colIdentifiers = new java.lang.Object[campos.size()];
-        for(int i = 0; i<campos.size();i++)
-        {
+        String nombreTabla = sql.substring(sql.indexOf(" FROM ") + 6);
+        if (nombreTabla.contains(" ")) {
+            nombreTabla = nombreTabla.substring(0, nombreTabla.indexOf(" "));
+        }       
+        List<Object[]> campos;
+        java.lang.Object[] colIdentifiers;
+
+        if (sql.startsWith("SELECT *")) {
+            campos = this.listarCampos(nombreTabla);
+
+        } else {
+            String aux = sql.substring(sql.indexOf(" ") + 1, sql.indexOf(" FROM"));
+            String[] datos = aux.split((","));
+            campos = new ArrayList<Object[]>();
+            for (String d : datos) {
+                campos.add(new Object[]{d.trim()});
+            }
+        }
+
+        colIdentifiers = new java.lang.Object[campos.size()];
+
+        for (int i = 0; i < campos.size(); i++) {
             Object[] c = campos.get(i);
-            colIdentifiers[i]= c[0].toString();
+            colIdentifiers[i] = c[0].toString();
         };
         lista.setColumnIdentifiers(colIdentifiers);
         while (rs.next()) {
             Object[] obj = new Object[campos.size()];
-            for (int i = 0; i < campos.size(); i++)
-            {
+            for (int i = 0; i < campos.size(); i++) {
                 Object[] campito = campos.get(i);
                 obj[i] = rs.getString(String.valueOf(campito[0]));
             }
